@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 /**
+ * Модель данных получена командой
  * Scaffold-DbContext "Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\Users\Lena\NET\DB\STUD_20.mdf;Integrated Security=True;Connect Timeout=30" Microsoft.EntityFrameworkCore.SqlServer -Context STUD_20Context -OutputDir Models -Tables STUDENTS, GROUPS, SUBJECTS, TUTORS, CHAIRS, CURRICULUM
  * Команда не отработает, если есть ошибки компиляции
  * 
@@ -27,8 +28,8 @@ namespace LabLINQ_M
         }//DataAccess()
 
         /* TODO:
-         * Исправить путь к файлу БД в строке соединения (App.config)
-         * Если есть проблемы с БД - пересоздать её, используя сценарий Stud.sql
+         * Исправить путь к файлу БД в строке соединения в контексте данных (Models.STUD_20Context.cs)
+         * Если есть проблемы с БД - пересоздать её, используя сценарий Stud_20.sql
          * Выполнять задания в этом файле в соответсвии с вариантом
          */
 
@@ -86,7 +87,7 @@ namespace LabLINQ_M
                 ).FirstOrDefault()
 
             }
-            ).ToList();
+            ).ToList();  // ToList() нужен, т.к. EF Core не получит данные, пока мы не попытаемся их прочитать
         }//Query1Example()
 
         public object Query1()
@@ -134,7 +135,7 @@ namespace LabLINQ_M
         {
             return 
             
-                from tut in context.Tutors.AsEnumerable()
+                from tut in context.Tutors.AsEnumerable()  // AsEnumerable() нужно добавлять, т.к. EF Core не будет группировать данные до их чтения
                 where tut.NameFio.Length <= 12   // фильтрация элементов данных
                 group tut by tut.NameFio.Substring(0, 1) into gr
                 where (gr.Key != "М") && (gr.Key != "Ж")        // фильтрация групп
