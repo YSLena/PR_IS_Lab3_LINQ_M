@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LabLINQ_M.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +19,11 @@ using System.Threading.Tasks;
 
 namespace LabLINQ_M
 {
-    class DataAccess
+    class DataAccess 
     {
 
         Models.STUD_20Context context = new Models.STUD_20Context();
+        private int? SumAbsences;
 
         public DataAccess()
         {
@@ -114,27 +117,37 @@ namespace LabLINQ_M
                 null;
         }//Query4()
 
-        public object Query5()
-        {
-            return
-                null;
-        }//Query4()
 
-
-        /* TODO 6.1 Пример группировки
-         * Запрос извлекает преподавателей, группируя их по первой букве фамилии
-         * длинные ФИО (более 12 символов) не включаются;
-         * ФИО на буквы М и Ж тоже не вкоючаются.
+        /* TODO 5.1 Пример группировки
+         * Запрос извлекает преподавателей, для которых задана ссылка на кафедру, 
+         * группируя их по ФИО завкафедрой,
+         * группа преподов, заведующим которых является Соколов, не извлекается,
+         * полученные группы сортируются по ФИО завкафедрой в обратном порядке.
          * 
-         * Обратите внимание на две инструкции where:
-         * первая фильтрует отдельные элементы до группировки,
-         * вторая - уже сформированные группы
+         * Обратите внимание, что связанные данные надо подгружать до группировки.
+         * Для этого используются методы Include() и ThenInclude().
+         * 
+         * Обратите внимание на метод AsEnumerable(), заставляющий программу прочитать данные
+         * EF Core выполняет группировку только после загрузки данных
+         * 
+         * Также обратите внимание, что инструкция where используется дважды: до группировки и после
          */
 
-        public IOrderedEnumerable<IGrouping<string, Models.Tutors>> Task6Example()
+        public IOrderedEnumerable<IGrouping<string, Models.Tutors>> Task5Example()
         {
-            return 
-            
+            return
+
+                from tut in context.Tutors.Include(t => t.Chair).ThenInclude(c => c.ChairHead).AsEnumerable() // подгружаем преподов, кафедры и заведующих
+                where tut.Chair != null                             // проверяем наличие ссылки на кафедру, фильтруя исхожные данные
+                group tut by tut.Chair.ChairHead.NameFio into gr    // собственно группировка
+                where !gr.Key.Contains("Соколов")                   // фильтрация после группировки
+                orderby gr.Key descending                           // сортировка групп
+                select gr;
+                
+
+            /*
+             * Это старый пример. Он тоже работает
+             * 
                 from tut in context.Tutors.AsEnumerable()  // AsEnumerable() нужно добавлять, т.к. EF Core не будет группировать данные до их чтения
                 where tut.NameFio.Length <= 12   // фильтрация элементов данных
                 group tut by tut.NameFio.Substring(0, 1) into gr
@@ -142,32 +155,28 @@ namespace LabLINQ_M
                 orderby gr.Key descending
                 select gr;
                 
-        }//Task6Example()
+            */
+        }//Task5Example()
 
-        /* TODO 6.2 
-         * Допишите код метода Task6() для получения данных в соответствии с вариантом
+        /* TODO 5.2 
+         * Допишите код метода Task5() для получения данных в соответствии с вариантом
          * Обратите внимание, что ключ группировки имеет тип string
          * Если у вас по заданию ключ числовой - преобразуйте в строку
          * Это связано с настройкой вывода на форму, на самом деле допустим любой тип данных
-         * ToString() не помомжет, т.к. его невозможно преобразовать в SQL
-         * Вместо этого используйте SqlFunctions.StringConvert(), например так:
-         * SqlFunctions.StringConvert( (double)st.ABSENCES)
-         * Подробности:
-         * https://docs.microsoft.com/ru-ru/dotnet/api/system.data.objects.sqlclient.sqlfunctions?view=netframework-4.8
          */
 
-        public IOrderedEnumerable<IGrouping<string, Models.Students>> Task6()
+        public IOrderedEnumerable<IGrouping<string, Models.Students>> Task5()
         {
             return
                 null;
-        }//Task6()
+        }//Task5()
 
-        /* TODO 7.1 Пример группировки с подсчётом агрегатных функций
+        /* TODO 6.1 Пример группировки с подсчётом агрегатных функций
          * Функции Count(), Min(), Max(), Average(), Sum()
-         * подсчитываются по каждой группе данных
+         * подсчитываются по каждой группе данных (считается длина фамилий)
         */
 
-        public object Task7Example()
+        public object Task6Example()
         {
             return
                 (
@@ -184,7 +193,55 @@ namespace LabLINQ_M
                     sumLength = gr.Sum(t => t.NameFio.Length)
                 }
                 ).ToList();
-        }//Task7Example
+        }//Task6Example
+
+        /* TODO 6.2
+         * Напишите запрос с группировкой и подсчётом агрегатных функций
+         * в соответсвии с вариантом задания
+         */
+
+        public object Task6()
+        {
+            return
+                null;
+        }//Task6
+
+        /* TODO 7.1 Пример группировки с выполнением расчётов по связанным данным.
+         * По каждому куратору подсчитывается количество групп и общая длина фамилий студентов без пробелов
+         * 
+         * Аналогичный запрос на SQL:
+         * 
+            SELECT T.NAME_FIO, COUNT(DISTINCT G.GROUP_ID), SUM(LEN(S.SURNAME))
+            FROM TUTORS T JOIN GROUPS G ON T.TUTOR_ID = G.CURATOR_ID
+            JOIN STUDENTS S ON G.GROUP_ID = S.GROUP_ID
+            GROUP BY T.NAME_FIO
+         * 
+         * В более ранних версиях можно было использовать подзапросы вида
+         * SumSurnameLen = t.CuratorOfGroups.Sum(gg => gg.Students.Sum(stt => stt.Surname.Trim().Length))
+         * Однако в EF Core 3.0 было запрещено использование подзапросов в подзапросах, т.к. 
+         * их нельзя преобразовать в SQL, а довыполнение запросов на клиенте может вызывать непредсказуемое поведение
+         * Подробности:
+         * https://docs.microsoft.com/ru-ru/ef/core/what-is-new/ef-core-3.x/breaking-changes#linq-queries-are-no-longer-evaluated-on-the-client
+         * Поэтому теперь надо сначала вытащить все связанные данные, а потом группировать их и считать агрегатные функции
+         */
+
+
+        public object Task7Example()
+        {
+            return
+                (
+                from st in context.Students.Include(st => st.Group).ThenInclude(g => g.Curator).AsEnumerable()
+                group st by st.Group.Curator.NameFio into gr
+                orderby gr.Key
+                select new
+                {
+                    CuratorFIO = gr.Key,
+                    GroupCount = (from stt in gr select stt.Group).Distinct().Count(),
+                    SumSurnameLen = gr.Sum(sttt => sttt.Surname.Trim().Length)
+                }
+                ).ToList();
+
+        }//Task7Example()
 
         /* TODO 7.2
          * Напишите запрос с группировкой и подсчётом агрегатных функций
@@ -195,7 +252,7 @@ namespace LabLINQ_M
         {
             return
                 null;
-        }//Task7
+        }//Query7()
 
 
     }//class DataAccess}

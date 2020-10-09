@@ -40,11 +40,7 @@ namespace LabLINQ_M
             if (dataGridView4.RowCount > 0)
                 tabControl.SelectedTab = tabControl.TabPages["tabQuery4"];
 
-            dataGridView5.DataSource = dataAcc.Query5();
-            if (dataGridView5.RowCount > 0)
-                tabControl.SelectedTab = tabControl.TabPages["tabQuery5"];
-
-            IOrderedEnumerable<IGrouping<string, Models.Tutors>> groupsEx = dataAcc.Task6Example();
+            IOrderedEnumerable<IGrouping<string, Models.Tutors>> groupsEx = dataAcc.Task5Example();
             if (groupsEx != null)
             {
                 foreach (var gr in groupsEx)
@@ -57,7 +53,7 @@ namespace LabLINQ_M
                 }
             }
 
-            IOrderedEnumerable<IGrouping<string, Models.Students>> groupsSt = dataAcc.Task6();
+            IOrderedEnumerable<IGrouping<string, Models.Students>> groupsSt = dataAcc.Task5();
             if (groupsSt != null)
             {
                 foreach (var gr in groupsSt)
@@ -74,15 +70,24 @@ namespace LabLINQ_M
             }
 
             if (textBoxGroup.Text.Length > 0)
+                tabControl.SelectedTab = tabControl.TabPages["tabTask5"];
+
+            object Task6DataEx = dataAcc.Task6Example();
+            dataGridViewAggrExample.DataSource = Task6DataEx;
+            dataGridViewAggrExample.Refresh();
+
+            object Task6Data = dataAcc.Task6();
+            dataGridViewAggr.DataSource = Task6Data;
+            if (dataGridViewAggr.RowCount > 0)
                 tabControl.SelectedTab = tabControl.TabPages["tabTask6"];
 
             object Task7DataEx = dataAcc.Task7Example();
-            dataGridViewAggrExample.DataSource = Task7DataEx;
-            dataGridViewAggrExample.Refresh();
+            dataGridView7Example.DataSource = Task7DataEx;
+            dataGridView7Example.Refresh();
 
             object Task7Data = dataAcc.Task7();
-            dataGridViewAggr.DataSource = Task7Data;
-            if (dataGridViewAggr.RowCount > 0)
+            dataGridView7.DataSource = Task7Data;
+            if (dataGridView7.RowCount > 0)
                 tabControl.SelectedTab = tabControl.TabPages["tabTask7"];
         }
     }

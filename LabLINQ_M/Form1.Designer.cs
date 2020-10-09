@@ -37,18 +37,20 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabQuery3 = new System.Windows.Forms.TabPage();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.tabTask7 = new System.Windows.Forms.TabPage();
+            this.dataGridView7Example = new System.Windows.Forms.DataGridView();
             this.tabQuery4 = new System.Windows.Forms.TabPage();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.tabQuery5 = new System.Windows.Forms.TabPage();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.tabTask6 = new System.Windows.Forms.TabPage();
+            this.tabTask5 = new System.Windows.Forms.TabPage();
             this.splitContainer12 = new System.Windows.Forms.SplitContainer();
             this.textBoxGroupExample = new System.Windows.Forms.TextBox();
             this.textBoxGroup = new System.Windows.Forms.TextBox();
-            this.tabTask7 = new System.Windows.Forms.TabPage();
+            this.tabTask6 = new System.Windows.Forms.TabPage();
             this.splitContainer13 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewAggrExample = new System.Windows.Forms.DataGridView();
             this.dataGridViewAggr = new System.Windows.Forms.DataGridView();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.tabControl.SuspendLayout();
             this.tabQuery1Ex.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1Example)).BeginInit();
@@ -58,22 +60,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabQuery3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabTask7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7Example)).BeginInit();
             this.tabQuery4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            this.tabQuery5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            this.tabTask6.SuspendLayout();
+            this.tabTask5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).BeginInit();
             this.splitContainer12.Panel1.SuspendLayout();
             this.splitContainer12.Panel2.SuspendLayout();
             this.splitContainer12.SuspendLayout();
-            this.tabTask7.SuspendLayout();
+            this.tabTask6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer13)).BeginInit();
             this.splitContainer13.Panel1.SuspendLayout();
             this.splitContainer13.Panel2.SuspendLayout();
             this.splitContainer13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAggrExample)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAggr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -83,7 +90,7 @@
             this.tabControl.Controls.Add(this.tabQuery2);
             this.tabControl.Controls.Add(this.tabQuery3);
             this.tabControl.Controls.Add(this.tabQuery4);
-            this.tabControl.Controls.Add(this.tabQuery5);
+            this.tabControl.Controls.Add(this.tabTask5);
             this.tabControl.Controls.Add(this.tabTask6);
             this.tabControl.Controls.Add(this.tabTask7);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -173,6 +180,26 @@
             this.dataGridView3.Size = new System.Drawing.Size(915, 560);
             this.dataGridView3.TabIndex = 0;
             // 
+            // tabTask7
+            // 
+            this.tabTask7.Controls.Add(this.splitContainer1);
+            this.tabTask7.Location = new System.Drawing.Point(4, 22);
+            this.tabTask7.Name = "tabTask7";
+            this.tabTask7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTask7.Size = new System.Drawing.Size(921, 566);
+            this.tabTask7.TabIndex = 4;
+            this.tabTask7.Text = "Задание 7";
+            this.tabTask7.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView7Example
+            // 
+            this.dataGridView7Example.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7Example.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView7Example.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView7Example.Name = "dataGridView7Example";
+            this.dataGridView7Example.Size = new System.Drawing.Size(915, 228);
+            this.dataGridView7Example.TabIndex = 0;
+            // 
             // tabQuery4
             // 
             this.tabQuery4.Controls.Add(this.dataGridView4);
@@ -180,7 +207,7 @@
             this.tabQuery4.Name = "tabQuery4";
             this.tabQuery4.Padding = new System.Windows.Forms.Padding(3);
             this.tabQuery4.Size = new System.Drawing.Size(921, 566);
-            this.tabQuery4.TabIndex = 4;
+            this.tabQuery4.TabIndex = 5;
             this.tabQuery4.Text = "Задание 4";
             this.tabQuery4.UseVisualStyleBackColor = true;
             // 
@@ -193,36 +220,16 @@
             this.dataGridView4.Size = new System.Drawing.Size(915, 560);
             this.dataGridView4.TabIndex = 0;
             // 
-            // tabQuery5
+            // tabTask5
             // 
-            this.tabQuery5.Controls.Add(this.dataGridView5);
-            this.tabQuery5.Location = new System.Drawing.Point(4, 22);
-            this.tabQuery5.Name = "tabQuery5";
-            this.tabQuery5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabQuery5.Size = new System.Drawing.Size(921, 566);
-            this.tabQuery5.TabIndex = 5;
-            this.tabQuery5.Text = "Задание 5";
-            this.tabQuery5.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView5
-            // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView5.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(915, 560);
-            this.dataGridView5.TabIndex = 0;
-            // 
-            // tabTask6
-            // 
-            this.tabTask6.Controls.Add(this.splitContainer12);
-            this.tabTask6.Location = new System.Drawing.Point(4, 22);
-            this.tabTask6.Name = "tabTask6";
-            this.tabTask6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTask6.Size = new System.Drawing.Size(921, 566);
-            this.tabTask6.TabIndex = 8;
-            this.tabTask6.Text = "Задание 6. Группировка данных";
-            this.tabTask6.UseVisualStyleBackColor = true;
+            this.tabTask5.Controls.Add(this.splitContainer12);
+            this.tabTask5.Location = new System.Drawing.Point(4, 22);
+            this.tabTask5.Name = "tabTask5";
+            this.tabTask5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTask5.Size = new System.Drawing.Size(921, 566);
+            this.tabTask5.TabIndex = 8;
+            this.tabTask5.Text = "Задание 5. Группировка данных";
+            this.tabTask5.UseVisualStyleBackColor = true;
             // 
             // splitContainer12
             // 
@@ -262,16 +269,16 @@
             this.textBoxGroup.Size = new System.Drawing.Size(915, 359);
             this.textBoxGroup.TabIndex = 0;
             // 
-            // tabTask7
+            // tabTask6
             // 
-            this.tabTask7.Controls.Add(this.splitContainer13);
-            this.tabTask7.Location = new System.Drawing.Point(4, 22);
-            this.tabTask7.Name = "tabTask7";
-            this.tabTask7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTask7.Size = new System.Drawing.Size(921, 566);
-            this.tabTask7.TabIndex = 9;
-            this.tabTask7.Text = "Задание 7. Агрегация с группировкой";
-            this.tabTask7.UseVisualStyleBackColor = true;
+            this.tabTask6.Controls.Add(this.splitContainer13);
+            this.tabTask6.Location = new System.Drawing.Point(4, 22);
+            this.tabTask6.Name = "tabTask6";
+            this.tabTask6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTask6.Size = new System.Drawing.Size(921, 566);
+            this.tabTask6.TabIndex = 9;
+            this.tabTask6.Text = "Задание 6. Агрегация с группировкой";
+            this.tabTask6.UseVisualStyleBackColor = true;
             // 
             // splitContainer13
             // 
@@ -309,6 +316,33 @@
             this.dataGridViewAggr.Size = new System.Drawing.Size(915, 324);
             this.dataGridViewAggr.TabIndex = 0;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dataGridView7Example);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridView7);
+            this.splitContainer1.Size = new System.Drawing.Size(915, 560);
+            this.splitContainer1.SplitterDistance = 228;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // dataGridView7
+            // 
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView7.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(915, 328);
+            this.dataGridView7.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,24 +361,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabQuery3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabTask7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7Example)).EndInit();
             this.tabQuery4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            this.tabQuery5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            this.tabTask6.ResumeLayout(false);
+            this.tabTask5.ResumeLayout(false);
             this.splitContainer12.Panel1.ResumeLayout(false);
             this.splitContainer12.Panel1.PerformLayout();
             this.splitContainer12.Panel2.ResumeLayout(false);
             this.splitContainer12.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer12)).EndInit();
             this.splitContainer12.ResumeLayout(false);
-            this.tabTask7.ResumeLayout(false);
+            this.tabTask6.ResumeLayout(false);
             this.splitContainer13.Panel1.ResumeLayout(false);
             this.splitContainer13.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer13)).EndInit();
             this.splitContainer13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAggrExample)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAggr)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,20 +398,21 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.TabPage tabQuery3;
         private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.TabPage tabTask7;
+        private System.Windows.Forms.DataGridView dataGridView7Example;
         private System.Windows.Forms.TabPage tabQuery4;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.TabPage tabQuery5;
-        private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridView dataGridView1Example;
-        private System.Windows.Forms.TabPage tabTask6;
+        private System.Windows.Forms.TabPage tabTask5;
         private System.Windows.Forms.SplitContainer splitContainer12;
         private System.Windows.Forms.TextBox textBoxGroupExample;
         private System.Windows.Forms.TextBox textBoxGroup;
-        private System.Windows.Forms.TabPage tabTask7;
+        private System.Windows.Forms.TabPage tabTask6;
         private System.Windows.Forms.SplitContainer splitContainer13;
         private System.Windows.Forms.DataGridView dataGridViewAggrExample;
         private System.Windows.Forms.DataGridView dataGridViewAggr;
-
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView dataGridView7;
     }
 }
 
