@@ -21,9 +21,11 @@ namespace LabLINQ_M
 {
     class DataAccess 
     {
-
+        /* 
+         * Контекст данных
+         * Классы модели данных находятся в папке Models
+         */
         Models.STUD_20Context context = new Models.STUD_20Context();
-        private int? SumAbsences;
 
         public DataAccess()
         {
